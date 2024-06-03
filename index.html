@@ -26,13 +26,6 @@
     <script>
         function simulateRolls() {
             const odds = document.getElementById('oddsInput').value;
-            const result = document.getElementById('result');
-
-            if (!odds || odds <= 0) {
-                result.innerText = "Oops! Please enter a valid number greater than zero.";
-                return;
-            }
-
             let attempts = 0;
             let hit = false;
 
@@ -44,7 +37,7 @@
                 }
             }
 
-            result.innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
+            document.getElementById('result').innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
         }
     </script>
 </body>
