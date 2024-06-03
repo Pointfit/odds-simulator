@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odds Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Odds Simulator</h1>
+    <p>Enter the odds you would like to simulate (e.g., 30000 for 1/30000):</p>
+    <input type="number" id="oddsInput" placeholder="Enter odds">
+    <button onclick="simulateRolls()">Simulate</button>
+    <p id="result"></p>
+
+    <script>
+        function simulateRolls() {
+            const odds = document.getElementById('oddsInput').value;
+            let attempts = 0;
+            let hit = false;
+
+            while (!hit) {
+                attempts++;
+                const roll = Math.floor(Math.random() * odds) + 1;
+                if (roll == 1) {
+                    hit = true;
+                }
+            }
+
+            document.getElementById('result').innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
+        }
+    </script>
+</body>
+</html>
