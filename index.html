@@ -28,8 +28,8 @@
             const odds = document.getElementById('oddsInput').value;
             const result = document.getElementById('result');
 
-            if (!odds) {
-                result.innerText = "Oops! Please enter a number.";
+            if (!odds || odds <= 0) {
+                result.innerText = "Oops! Please enter a valid number greater than zero.";
                 return;
             }
 
