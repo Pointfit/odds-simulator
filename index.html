@@ -26,6 +26,13 @@
     <script>
         function simulateRolls() {
             const odds = document.getElementById('oddsInput').value;
+            const result = document.getElementById('result');
+
+            if (!odds) {
+                result.innerText = 'Oops, please enter a number.';
+                return;
+            }
+
             let attempts = 0;
             let hit = false;
 
@@ -37,7 +44,7 @@
                 }
             }
 
-            document.getElementById('result').innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
+            result.innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
         }
     </script>
 </body>
