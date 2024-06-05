@@ -15,14 +15,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
         h1 {
             margin-bottom: 20px;
             font-size: 2.5em;
+            animation: fadeInDown 1s;
         }
         p {
             margin-bottom: 20px;
             font-size: 1.2em;
+            animation: fadeInDown 1s;
         }
         input, button {
             padding: 10px;
@@ -30,6 +33,7 @@
             border-radius: 5px;
             border: none;
             font-size: 1em;
+            animation: fadeInUp 1s;
         }
         input {
             width: 200px;
@@ -40,14 +44,50 @@
             background-color: #6200ea;
             color: #ffffff;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         button:hover {
             background-color: #3700b3;
+            transform: scale(1.05);
         }
         #result {
             margin-top: 20px;
             font-size: 1.2em;
+            animation: fadeInUp 1s;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
         }
     </style>
 </head>
@@ -64,6 +104,8 @@
             let attempts = 0;
             let hit = false;
 
+            document.getElementById('result').innerText = ''; // Clear previous result
+
             while (!hit) {
                 attempts++;
                 const roll = Math.floor(Math.random() * odds) + 1;
@@ -72,7 +114,13 @@
                 }
             }
 
-            document.getElementById('result').innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
+            const resultElement = document.getElementById('result');
+            resultElement.innerText = `It took ${attempts} attempts to hit the 1/${odds} odd.`;
+            resultElement.style.animation = 'none'; // Reset animation
+            setTimeout(() => {
+                resultElement.style.animation = ''; // Trigger reflow
+                resultElement.style.animation = 'bounce 1s'; // Apply new animation
+            }, 10);
         }
     </script>
 </body>
