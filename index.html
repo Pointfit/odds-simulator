@@ -6,13 +6,48 @@
     <title>Odds Simulator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2em;
         }
         input, button {
             padding: 10px;
             margin: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+        input {
+            width: 200px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+        button {
+            background-color: #6200ea;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3700b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
         }
     </style>
 </head>
